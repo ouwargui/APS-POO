@@ -1,18 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aps.poo.pkgfor.real;
 
-/**
- *
- * @author GuilhermeSantos
- */
-public class ContaEspecial extends Conta {
+public class ContaEspecial extends Conta{
+
     private double limite;
-    
-    public boolean debitar(double quantia0) {}
-    
-    public void imprimir() {}
+
+    public double getLimite() {
+        return limite;
+    }
+
+    public void setLimite(double limite) {
+        this.limite = limite;
+    }
+
+    public boolean debitar(Double quantia){
+        boolean debito = false;
+        Double saldoAtual = this.saldo;
+
+        if (quantia <= limite - saldoAtual){
+            debito = true;
+
+            this.saldo = saldoAtual - quantia;
+        }
+
+        return debito;
+    }
+
+    public void imprimir(){
+
+    }
 }
