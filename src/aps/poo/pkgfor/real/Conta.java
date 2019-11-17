@@ -1,15 +1,22 @@
 package aps.poo.pkgfor.real;
 
 import javax.swing.JOptionPane;
+
 public class Conta {
 
-    private static int numero;
-
-    //String só para testes
+    private static int count = 0;
+    private int numero;
     private String cliente;
-    //-------------
     private String DataAbertura;
     protected double saldo;
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Conta.count = count;
+    }
 
     public int getNumero() {
         return numero;
@@ -43,38 +50,35 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public void depositar(Double quantia){
+    public void depositar(Double quantia) {
 
         this.setSaldo(this.saldo + quantia);
 
     }
 
-    public boolean debitar(Double quantia){
+    public boolean debitar(Double quantia) {
         boolean debito = false;
 
-        if (this.saldo < quantia){
+        if (this.saldo < quantia) {
 
             debito = true;
             this.setSaldo(this.saldo - quantia);
         }
-        if (debito = true){
+        if (debito = true) {
             JOptionPane.showMessageDialog(null, "Débito confirmado");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Débito negado, Saldo indisponível");
         }
         return debito;
     }
 
-
-    public boolean transferir(int numero, Double quantia){
+    public boolean transferir(int numero, Double quantia) {
         boolean transferido = false;
-
 
         return transferido;
     }
 
-    public void imprimir(){
-
+    public void imprimir() {
 
     }
 }

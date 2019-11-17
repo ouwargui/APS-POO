@@ -1,6 +1,7 @@
 package View;
 
 import Paineis.MudaPainel;
+import Paineis.PnlTransferir;
 
 public class InterfaceUsuario extends javax.swing.JFrame {
 
@@ -9,7 +10,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
      */
     public InterfaceUsuario() {
         initComponents();
-        
+
         new MudaPainel(pnlMuda, new Paineis.Inicial());
     }
 
@@ -33,6 +34,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         Case7 = new customButton.customButton();
         Case8 = new customButton.customButton();
         Case9 = new customButton.customButton();
+        Case10 = new customButton.customButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         pnlMuda = new javax.swing.JPanel();
@@ -50,18 +52,33 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         Case1.setColorHover(new java.awt.Color(0, 102, 102));
         Case1.setColorNormal(new java.awt.Color(0, 153, 153));
         Case1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        Case1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Case1ActionPerformed(evt);
+            }
+        });
 
         Case2.setBackground(new java.awt.Color(0, 153, 153));
         Case2.setText("Cadastrar Conta");
         Case2.setColorHover(new java.awt.Color(0, 102, 102));
         Case2.setColorNormal(new java.awt.Color(0, 153, 153));
         Case2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        Case2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Case2ActionPerformed(evt);
+            }
+        });
 
         Case3.setBackground(new java.awt.Color(0, 153, 153));
         Case3.setText("Listar Conta");
         Case3.setColorHover(new java.awt.Color(0, 102, 102));
         Case3.setColorNormal(new java.awt.Color(0, 153, 153));
         Case3.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        Case3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Case3ActionPerformed(evt);
+            }
+        });
 
         Case4.setBackground(new java.awt.Color(0, 153, 153));
         Case4.setText("Pesquisar Conta");
@@ -74,24 +91,44 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         Case5.setColorHover(new java.awt.Color(0, 102, 102));
         Case5.setColorNormal(new java.awt.Color(0, 153, 153));
         Case5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        Case5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Case5ActionPerformed(evt);
+            }
+        });
 
         Case6.setBackground(new java.awt.Color(0, 153, 153));
         Case6.setText("Debitar (Sacar)");
         Case6.setColorHover(new java.awt.Color(0, 102, 102));
         Case6.setColorNormal(new java.awt.Color(0, 153, 153));
         Case6.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        Case6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Case6ActionPerformed(evt);
+            }
+        });
 
         Case7.setBackground(new java.awt.Color(0, 153, 153));
         Case7.setText("Transferir");
         Case7.setColorHover(new java.awt.Color(0, 102, 102));
         Case7.setColorNormal(new java.awt.Color(0, 153, 153));
         Case7.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        Case7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Case7ActionPerformed(evt);
+            }
+        });
 
         Case8.setBackground(new java.awt.Color(0, 153, 153));
         Case8.setText("Remover (Conta)");
         Case8.setColorHover(new java.awt.Color(0, 102, 102));
         Case8.setColorNormal(new java.awt.Color(0, 153, 153));
         Case8.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        Case8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Case8ActionPerformed(evt);
+            }
+        });
 
         Case9.setBackground(new java.awt.Color(0, 153, 153));
         Case9.setText("Sair");
@@ -104,47 +141,63 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             }
         });
 
+        Case10.setBackground(new java.awt.Color(0, 153, 153));
+        Case10.setText("Inicio");
+        Case10.setColorHover(new java.awt.Color(0, 102, 102));
+        Case10.setColorNormal(new java.awt.Color(0, 153, 153));
+        Case10.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        Case10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Case10ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(Case9, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(Case8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Case7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Case6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Case5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Case4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Case3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Case2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Case1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(34, 34, 34))
+                    .addComponent(Case9, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(Case8, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(Case7, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(Case6, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(Case5, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(Case4, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(Case3, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(Case2, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(Case1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(Case10, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(Case1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(Case10, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Case2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Case1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Case3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Case2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Case4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Case3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Case5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Case4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Case6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Case5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Case7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Case6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Case8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Case7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Case9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addComponent(Case8, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Case9, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jScrollPane2.setBorder(null);
 
@@ -160,7 +213,10 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -196,6 +252,38 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     private void Case9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Case9ActionPerformed
         System.exit(WIDTH);
     }//GEN-LAST:event_Case9ActionPerformed
+
+    private void Case1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Case1ActionPerformed
+        new MudaPainel(pnlMuda, new Paineis.CadCliente());
+    }//GEN-LAST:event_Case1ActionPerformed
+
+    private void Case2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Case2ActionPerformed
+        new MudaPainel(pnlMuda, new Paineis.CadConta());
+    }//GEN-LAST:event_Case2ActionPerformed
+
+    private void Case3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Case3ActionPerformed
+        new MudaPainel(pnlMuda, new Paineis.ListaConta());
+    }//GEN-LAST:event_Case3ActionPerformed
+
+    private void Case5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Case5ActionPerformed
+        new MudaPainel(pnlMuda, new Paineis.PnlDepositar());       
+    }//GEN-LAST:event_Case5ActionPerformed
+
+    private void Case6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Case6ActionPerformed
+        new MudaPainel(pnlMuda, new Paineis.pnlSacar());
+    }//GEN-LAST:event_Case6ActionPerformed
+
+    private void Case7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Case7ActionPerformed
+        new MudaPainel(pnlMuda, new Paineis.PnlTransferir());
+    }//GEN-LAST:event_Case7ActionPerformed
+
+    private void Case8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Case8ActionPerformed
+        new MudaPainel(pnlMuda, new Paineis.PnlRemover());
+    }//GEN-LAST:event_Case8ActionPerformed
+
+    private void Case10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Case10ActionPerformed
+        new MudaPainel(pnlMuda, new Paineis.Inicial());
+    }//GEN-LAST:event_Case10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,6 +322,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customButton.customButton Case1;
+    private customButton.customButton Case10;
     private customButton.customButton Case2;
     private customButton.customButton Case3;
     private customButton.customButton Case4;
