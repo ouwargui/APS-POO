@@ -1,21 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package aps.poo.pkgfor.real;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author GuilhermeSantos
- */
 public class Cliente {
+
     private String nome;
     private String cpf;
     private String telefone;
-    
-    
-    public void imprimir(){}
 
     public String getNome() {
         return nome;
@@ -40,4 +29,9 @@ public class Cliente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public void imprimir(){
+        JOptionPane.showMessageDialog(null, "Nome: "+ this.nome + "\n CPF: " + this.cpf + "\n Telefone: " + this.telefone);
+    }
+
 }

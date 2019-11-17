@@ -17,18 +17,23 @@ import java.util.List;
 public class GerenciaCliente {
     ArrayList<Cliente> listaCliente = new ArrayList<>();
     InteracaoUsuario interacaoUsuario = new InteracaoUsuario();
-    
+
     public ArrayList<Cliente> getListaCliente(){
         return listaCliente;
     }
-    
+
     public void adicionar(Cliente cliente) {
         this.listaCliente.add(cliente);
     }
-    
+
     public String listar() {
+      String listar = "";
+
+      return listar;
     }
-    
-    public boolean existeCpf(Cliente cliente) {}
-    
+
+    public boolean existeCpf(Cliente cliente) {
+
+    return true;
+ }
 }
