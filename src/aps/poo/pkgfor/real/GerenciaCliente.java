@@ -6,7 +6,6 @@
 package aps.poo.pkgfor.real;
 
 import aps.poo.pkgfor.real.Cliente;
-import aps.poo.pkgfor.real.InteracaoUsuario;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,6 @@ import java.util.List;
  */
 public class GerenciaCliente {
     ArrayList<Cliente> listaCliente = new ArrayList<>();
-    InteracaoUsuario interacaoUsuario = new InteracaoUsuario();
 
     public ArrayList<Cliente> getListaCliente(){
         return listaCliente;
