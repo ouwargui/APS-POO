@@ -17,13 +17,14 @@ public class Banco {
     
     
     private ArrayList<Conta> listaContas;
+    private static Banco instanciaUnica;
     
     public Banco(){
         this.listaContas = new ArrayList<Conta>();
     }
 
     public ArrayList<Conta> getListaContas() {
-        return listaContas;
+        return this.listaContas;
     }
 
     public void setListaContas(ArrayList<Conta> listaContas) {
@@ -36,6 +37,12 @@ public class Banco {
     
     public String listar(){
         return "testes";
+    }
+    
+    public static synchronized Banco getInstance(){
+        if(instanciaUnica == null)
+            instanciaUnica = new Banco();
+        return instanciaUnica;
     }
     
     public String pesquisar(int numero){    

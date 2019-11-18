@@ -79,6 +79,6 @@ public class Conta {
     }
 
     public String imprimir(){
-        return "Cliente: "+ cliente + "Numero da Conta: " + numero + "Data de Abertura: " + DataAbertura + "Saldo: " + saldo;
+        return "Cliente: "+ this.getCliente() + "Numero da Conta: " + this.getNumero() + "Data de Abertura: " + this.getDataAbertura() + "Saldo: " + this.getSaldo();
     }
 }

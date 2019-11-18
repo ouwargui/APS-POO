@@ -11,13 +11,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import rojerusan.RSTableMetro;
 
 /**
  *
  * @author Kyky
  */
 public class ListaConta extends javax.swing.JPanel {
+
     /**
      * Creates new form ListaConta
      */
@@ -39,7 +43,7 @@ public class ListaConta extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblContas = new rojerusan.RSTableMetro();
+        tblContas = new javax.swing.JTable();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -62,27 +66,15 @@ public class ListaConta extends javax.swing.JPanel {
 
         tblContas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nº Conta", "Titular", "Data Inicial", "Saldo"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblContas.setColorBackgoundHead(new java.awt.Color(0, 153, 153));
-        tblContas.setColorBordeFilas(new java.awt.Color(255, 255, 255));
-        tblContas.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
-        tblContas.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
-        tblContas.setColorFilasForeground2(new java.awt.Color(0, 0, 0));
-        tblContas.setColorSelBackgound(new java.awt.Color(0, 153, 153));
-        tblContas.setSelectionBackground(new java.awt.Color(0, 153, 153));
+        ));
         jScrollPane1.setViewportView(tblContas);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -92,12 +84,12 @@ public class ListaConta extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,22 +122,37 @@ public class ListaConta extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private rojerusan.RSTableMetro tblContas;
+    private javax.swing.JTable tblContas;
     // End of variables declaration//GEN-END:variables
 private void lerTabela() {
-        Banco bank = new Banco();
-        ArrayList<Conta> dados = new ArrayList<>();
+        Banco banco = Banco.getInstance();
         try {
-            dados = bank.getListaContas();
+            String[] colunas = {"Numero", "Nome", "Data de Abertura", "Saldo"};
+            String[][] dados = new String[banco.getListaContas().size()][colunas.length];
+            int i = 0;
+            for (Conta objContas : banco.getListaContas()) {
+                String[] dadosUsuario = new String[colunas.length];
+                dadosUsuario[0] = "" + objContas.getNumero();
+                dadosUsuario[1] = "" + objContas.getCliente();
+                dadosUsuario[2] = objContas.getDataAbertura();
+                dadosUsuario[3] = "" + objContas.getSaldo();
+                //dadosUsuario[4] = objContas instanceof ContaEspecial ? "" + ((ContaEspecial) objContas).getLimite() : "Conta Comum";
+
+                dados[i++] = dadosUsuario;
+            }
+
+            TableModel model = new DefaultTableModel(dados, colunas);
+            tblContas = new JTable(model);
+
         } catch (Exception ex) {
             Logger.getLogger(ListaConta.class.getName()).log(Level.SEVERE, null, ex);
         }
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new String[]{"Nº Conta", "Titular", "Data Inicial", "Saldo"});
-        for (int i = 0; i < dados.size(); i++) {
-            modelo.addRow(new Object[]{dados.get(i).getNumero(), dados.get(i).getCliente(), dados.get(i).getDataAbertura(), dados.get(i).getSaldo()});
-            tblContas.setModel(modelo);
-        }
+        // System.out.println(dados.getSize());
+        //DefaultTableModel modelo = new DefaultTableModel();
+        //modelo.setColumnIdentifiers(new String[]{"Nº Conta", "Titular", "Data Inicial", "Saldo"});
+        //for (Conta conta : dados) {
+        //    modelo.addRow(new Object[]{conta.getNumero(), conta.getCliente(), conta.getDataAbertura(), conta.getSaldo()});
+        //    tblContas.setModel(modelo);
+        //}
     }
 }
-

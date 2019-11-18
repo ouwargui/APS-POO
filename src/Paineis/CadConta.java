@@ -206,7 +206,8 @@ public class CadConta extends javax.swing.JPanel {
             conta.setSaldo(saldo);
 
             banco.adicionar(conta);
-
+               
+            JOptionPane.showMessageDialog(null, conta.imprimir());
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 
             txtSaldo.setText("");
