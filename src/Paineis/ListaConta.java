@@ -18,13 +18,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Kyky
  */
 public class ListaConta extends javax.swing.JPanel {
-
     /**
      * Creates new form ListaConta
      */
     public ListaConta() {
         initComponents();
-        lertabela();
+        lerTabela();
     }
 
     /**
@@ -133,8 +132,7 @@ public class ListaConta extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private rojerusan.RSTableMetro tblContas;
     // End of variables declaration//GEN-END:variables
-private void lertabela() {
-
+private void lerTabela() {
         Banco bank = new Banco();
         ArrayList<Conta> dados = new ArrayList<>();
         try {
@@ -148,8 +146,6 @@ private void lertabela() {
             modelo.addRow(new Object[]{dados.get(i).getNumero(), dados.get(i).getCliente(), dados.get(i).getDataAbertura(), dados.get(i).getSaldo()});
             tblContas.setModel(modelo);
         }
-
     }
-
 }
 
