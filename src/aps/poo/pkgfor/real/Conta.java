@@ -6,7 +6,7 @@ public class Conta {
 
     private static int count = 0;
     private int numero;
-    private String cliente;
+    private int cliente;
     private String DataAbertura;
     protected double saldo;
 
@@ -26,11 +26,11 @@ public class Conta {
         this.numero = numero;
     }
 
-    public String getCliente() {
+    public int getCliente() {
         return cliente;
     }
 
-    public void setCliente(String cliente) {
+    public void setCliente(int cliente) {
         this.cliente = cliente;
     }
 
@@ -79,6 +79,6 @@ public class Conta {
     }
 
     public String imprimir(){
-        return "Cliente: "+cliente.toString() + "Numero da Conta: " + numero + "Data de Abertura: " + DataAbertura + "Saldo: " + saldo;
+        return "Cliente: "+ cliente + "Numero da Conta: " + numero + "Data de Abertura: " + DataAbertura + "Saldo: " + saldo;
     }
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aps.poo.pkgfor.real;
 
 /**
@@ -41,7 +36,6 @@ public class ContaEspecial extends Conta {
      * @param quantia
      * @return
      */
-    @Override
     public boolean debitar(double quantia){
         if(possivelDebito(quantia)){
             double saldoResultante = this.getSaldo() - quantia;
