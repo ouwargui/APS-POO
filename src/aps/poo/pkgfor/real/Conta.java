@@ -78,7 +78,7 @@ public class Conta {
         return transferido;
     }
 
-    public void imprimir() {
-
+    public String imprimir(){
+        return "Cliente: "+cliente.toString() + "Numero da Conta: " + numero + "Data de Abertura: " + DataAbertura + "Saldo: " + saldo;
     }
 }
