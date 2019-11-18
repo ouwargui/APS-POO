@@ -177,9 +177,6 @@
               </Border>
             </Property>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="try{&#xa;javax.swing.text.MaskFormatter cpf= new javax.swing.text.MaskFormatter(&quot;###.###.###-##&quot;);&#xa;txtSaldo = new javax.swing.JFormattedTextField(cpf);&#xa;}&#xa;catch (Exception e){&#xa;}"/>
-          </AuxValues>
         </Component>
         <Component class="customButton.customButton" name="btnCadastrar">
           <Properties>

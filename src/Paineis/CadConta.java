@@ -158,13 +158,6 @@ public class CadConta extends javax.swing.JPanel {
                     .addContainerGap()))
         );
 
-        try{
-            javax.swing.text.MaskFormatter cpf= new javax.swing.text.MaskFormatter("###.###.###-##");
-            txtSaldo = new javax.swing.JFormattedTextField(cpf);
-        }
-        catch (Exception e){
-        }
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,7 +179,7 @@ public class CadConta extends javax.swing.JPanel {
         double saldo;
         String data;
 
-        if (txtSaldo.getText() == null) {
+        if (txtSaldo.getText() == "") {
 
             saldo = 0.0;
 
@@ -198,7 +191,7 @@ public class CadConta extends javax.swing.JPanel {
 
         GregorianCalendar calendar = new GregorianCalendar();
         SimpleDateFormat formatador = new SimpleDateFormat("dd'/'MM'/'yyyy");
-        data = formatador.format(calendar.getTime());
+        data = String.format(formatador.format(calendar.getTime()));
 
         numero = Integer.parseInt(txtNum.getText());
 

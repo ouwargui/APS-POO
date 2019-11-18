@@ -5,6 +5,14 @@
  */
 package Paineis;
 
+import aps.poo.pkgfor.real.Banco;
+import aps.poo.pkgfor.real.Conta;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Kyky
@@ -16,6 +24,7 @@ public class ListaConta extends javax.swing.JPanel {
      */
     public ListaConta() {
         initComponents();
+        lertabela();
     }
 
     /**
@@ -30,6 +39,8 @@ public class ListaConta extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblContas = new rojerusan.RSTableMetro();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -50,16 +61,45 @@ public class ListaConta extends javax.swing.JPanel {
             .addGap(0, 8, Short.MAX_VALUE)
         );
 
+        tblContas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nº Conta", "Titular", "Data Inicial", "Saldo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblContas.setColorBackgoundHead(new java.awt.Color(0, 153, 153));
+        tblContas.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        tblContas.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        tblContas.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        tblContas.setColorFilasForeground2(new java.awt.Color(0, 0, 0));
+        tblContas.setColorSelBackgound(new java.awt.Color(0, 153, 153));
+        tblContas.setSelectionBackground(new java.awt.Color(0, 153, 153));
+        jScrollPane1.setViewportView(tblContas);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(538, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,7 +108,9 @@ public class ListaConta extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(516, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -88,5 +130,26 @@ public class ListaConta extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private rojerusan.RSTableMetro tblContas;
     // End of variables declaration//GEN-END:variables
+private void lertabela() {
+
+        Banco bank = new Banco();
+        ArrayList<Conta> dados = new ArrayList<>();
+        try {
+            dados = bank.getListaContas();
+        } catch (Exception ex) {
+            Logger.getLogger(ListaConta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new String[]{"Nº Conta", "Titular", "Data Inicial", "Saldo"});
+        for (int i = 0; i < dados.size(); i++) {
+            modelo.addRow(new Object[]{dados.get(i).getNumero(), dados.get(i).getCliente(), dados.get(i).getDataAbertura(), dados.get(i).getSaldo()});
+            tblContas.setModel(modelo);
+        }
+
+    }
+
 }
+
