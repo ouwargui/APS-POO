@@ -1,29 +1,29 @@
 package aps.poo.pkgfor.real;
 
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JOptionPane;
 
 public class Conta {
 
-    private static int count = 0;
+    
     private int numero;
     private int cliente;
     private String DataAbertura;
     protected double saldo;
+    
+    private static final AtomicInteger count = new AtomicInteger(1);
 
-    public static int getCount() {
+    public static AtomicInteger getCount() {
         return count;
     }
-
-    public static void setCount(int count) {
-        Conta.count = count;
-    }
+    
 
     public int getNumero() {
         return numero;
     }
 
     public void setNumero(int numero) {
-        this.numero = numero;
+        this.numero = count.getAndIncrement();
     }
 
     public int getCliente() {

@@ -37,12 +37,12 @@ public class CadConta extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtNum = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtSaldo = new javax.swing.JTextField();
         btnCadastrar = new customButton.customButton();
         btnLimpar = new customButton.customButton();
         jLabel6 = new javax.swing.JLabel();
+        cmbNumCliente = new rojerusan.RSComboMetro();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -65,14 +65,6 @@ public class CadConta extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 22)); // NOI18N
         jLabel2.setText("NÚM. CLIENTE:");
-
-        txtNum.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        txtNum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153), 2));
-        txtNum.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNumKeyTyped(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 22)); // NOI18N
         jLabel3.setText("SALDO INICIAL (OPCIONAL):");
@@ -103,22 +95,39 @@ public class CadConta extends javax.swing.JPanel {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/UAMLOGO.png"))); // NOI18N
 
+        cmbNumCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153), 2));
+        cmbNumCliente.setForeground(new java.awt.Color(0, 0, 0));
+        cmbNumCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
+        cmbNumCliente.setColorArrow(new java.awt.Color(0, 153, 153));
+        cmbNumCliente.setColorBorde(new java.awt.Color(0, 153, 153));
+        cmbNumCliente.setColorFondo(new java.awt.Color(255, 255, 255));
+        cmbNumCliente.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        cmbNumCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbNumClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(498, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(cmbNumCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(506, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(37, 37, 37)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
-                        .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)
                         .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -136,7 +145,9 @@ public class CadConta extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(466, Short.MAX_VALUE))
+                .addGap(127, 127, 127)
+                .addComponent(cmbNumCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(302, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -144,9 +155,7 @@ public class CadConta extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(127, 127, 127)
                             .addComponent(jLabel2)
-                            .addGap(9, 9, 9)
-                            .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(16, 16, 16)
+                            .addGap(61, 61, 61)
                             .addComponent(jLabel3)
                             .addGap(9, 9, 9)
                             .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,10 +179,6 @@ public class CadConta extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumKeyTyped
-    
-    }//GEN-LAST:event_txtNumKeyTyped
-
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         int numero;
         double saldo;
@@ -193,7 +198,7 @@ public class CadConta extends javax.swing.JPanel {
         SimpleDateFormat formatador = new SimpleDateFormat("dd'/'MM'/'yyyy");
         data = String.format(formatador.format(calendar.getTime()));
 
-        numero = Integer.parseInt(txtNum.getText());
+        numero = Integer.parseInt(String.valueOf(cmbNumCliente.getSelectedItem()));
 
         try {
 
@@ -211,7 +216,6 @@ public class CadConta extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 
             txtSaldo.setText("");
-            txtNum.setText("");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -220,20 +224,23 @@ public class CadConta extends javax.swing.JPanel {
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         txtSaldo.setText("");
-        txtNum.setText("");
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void cmbNumClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNumClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbNumClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customButton.customButton btnCadastrar;
     private customButton.customButton btnLimpar;
+    private rojerusan.RSComboMetro cmbNumCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txtNum;
     private javax.swing.JTextField txtSaldo;
     // End of variables declaration//GEN-END:variables
 }

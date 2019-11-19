@@ -208,6 +208,7 @@ public class CadCliente extends javax.swing.JPanel {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         String nome, telefone, cpf;
+        int numero;
 
         nome = txtNome.getText();
         cpf = txtCpf.getText();

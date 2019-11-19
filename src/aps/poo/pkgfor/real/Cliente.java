@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 public class Cliente {
 
-    private static final AtomicInteger count = new AtomicInteger(0);
+    private static final AtomicInteger count = new AtomicInteger(1);
 
     public static AtomicInteger getCount() {
         return count;
