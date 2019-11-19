@@ -67,13 +67,10 @@ public class Conta {
         }
     }
 
-    public boolean transferir(Conta conta, Double quantia) {
-        if(debitar(quantia)){
-            conta.setSaldo(conta.getSaldo() + quantia);
+    public boolean transferir(Conta conta1, Conta conta2, Double quantia) {
+            conta2.setSaldo(conta2.getSaldo() + quantia);
+            conta1.setSaldo(conta1.getSaldo() - quantia);
             return true;
-        }else{
-            return false;
-        }
     }
 
     public String imprimir(){

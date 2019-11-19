@@ -6,9 +6,12 @@
 package Paineis;
 
 import aps.poo.pkgfor.real.Banco;
+import aps.poo.pkgfor.real.Cliente;
 import aps.poo.pkgfor.real.Conta;
+import aps.poo.pkgfor.real.GerenciaCliente;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
+import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,12 +19,17 @@ import javax.swing.JOptionPane;
  * @author Kyky
  */
 public class CadConta extends javax.swing.JPanel {
-
+    
     /**
      * Creates new form CadConta
      */
     public CadConta() {
         initComponents();
+        GerenciaCliente gerenciador = GerenciaCliente.getInstance();
+            
+            for (Cliente objContas : gerenciador.getListaClientes()) {
+                cmbNumCliente.addItem(objContas.getNumero());
+            }
     }
 
     /**
@@ -97,7 +105,6 @@ public class CadConta extends javax.swing.JPanel {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/UAMLOGO.png"))); // NOI18N
 
         cmbNumCliente.setForeground(new java.awt.Color(0, 0, 0));
-        cmbNumCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
         cmbNumCliente.setColorArrow(new java.awt.Color(0, 153, 153));
         cmbNumCliente.setColorBorde(new java.awt.Color(0, 153, 153));
         cmbNumCliente.setColorFondo(new java.awt.Color(255, 255, 255));
@@ -209,7 +216,7 @@ public class CadConta extends javax.swing.JPanel {
         numero = Integer.parseInt(String.valueOf(cmbNumCliente.getSelectedItem()));
 
         try {
-
+            
             Banco banco = Banco.getInstance();
             Conta conta = new Conta();
 

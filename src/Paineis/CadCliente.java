@@ -5,6 +5,7 @@
  */
 package Paineis;
 
+
 import aps.poo.pkgfor.real.Cliente;
 import aps.poo.pkgfor.real.GerenciaCliente;
 import java.text.ParseException;
@@ -230,7 +231,7 @@ public class CadCliente extends javax.swing.JPanel {
             txtCpf.setText("");
             txtNome.setText("");
             txtTelefone.setText("");
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }

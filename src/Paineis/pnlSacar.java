@@ -5,6 +5,10 @@
  */
 package Paineis;
 
+import aps.poo.pkgfor.real.Banco;
+import aps.poo.pkgfor.real.Conta;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Kyky
@@ -169,7 +173,22 @@ public class pnlSacar extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNumContaKeyTyped
 
     private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarActionPerformed
-        
+        int escolha;
+        double valor2;
+       
+        try{
+            Conta conta = new Conta();
+            Banco banco = Banco.getInstance();
+            escolha = Integer.parseInt(String.valueOf(txtNumConta.getText()));
+            conta = banco.getConta(escolha);
+            valor2 = Double.parseDouble(String.valueOf(txtValor.getText()));
+            
+            conta.debitar(valor2);
+            txtValor.setText("");
+            JOptionPane.showMessageDialog(null, "Debitado! Saldo atual: R$" + conta.getSaldo());
+       }catch (Exception e){
+           JOptionPane.showMessageDialog(null, e);
+       }
     }//GEN-LAST:event_btnSacarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed

@@ -5,6 +5,10 @@
  */
 package Paineis;
 
+import aps.poo.pkgfor.real.Banco;
+import javax.swing.JOptionPane;
+import aps.poo.pkgfor.real.Conta;
+
 /**
  *
  * @author Kyky
@@ -65,6 +69,11 @@ public class PnlDepositar extends javax.swing.JPanel {
 
         txtNum.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         txtNum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153), 2));
+        txtNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumActionPerformed(evt);
+            }
+        });
         txtNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNumKeyTyped(evt);
@@ -76,6 +85,11 @@ public class PnlDepositar extends javax.swing.JPanel {
 
         txtValor.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         txtValor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153), 2));
+        txtValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorActionPerformed(evt);
+            }
+        });
 
         btnDepositar.setBackground(new java.awt.Color(0, 153, 153));
         btnDepositar.setText("DEPOSITAR");
@@ -165,19 +179,43 @@ public class PnlDepositar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumKeyTyped
-        String caracteres = "0987654321!@#$%¨&*()_+=[{]}/?;:.>,<°ºª§¬¢£³²¹/*-+,|";
+        String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUBVWXYZ!@#$%¨&*()^Ç`^Ç`#@!#@!$^@!^^Ç{Ç:<<>/";
         if (caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
     }//GEN-LAST:event_txtNumKeyTyped
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
+       int escolha;
+       double valor2;
+       
+       try{
+            Conta conta = new Conta();
+            Banco banco = Banco.getInstance();
+            escolha = Integer.parseInt(String.valueOf(txtNum.getText()));
+            conta = banco.getConta(escolha);
+            valor2 = Double.parseDouble(String.valueOf(txtValor.getText()));
+            
+            conta.depositar(valor2);
+            txtValor.setText("");
+            JOptionPane.showMessageDialog(null, "Depositado! Saldo atual: R$" + conta.getSaldo());
+       }catch (Exception e){
+           JOptionPane.showMessageDialog(null, e);
+       }
        
     }//GEN-LAST:event_btnDepositarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void txtNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumActionPerformed
+
+    private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

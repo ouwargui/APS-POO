@@ -1,7 +1,9 @@
 package aps.poo.pkgfor.real;
 
+import Paineis.ListaCliente;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JOptionPane;
+import aps.poo.pkgfor.real.GerenciaCliente;
 
 public class Cliente {
 
@@ -10,7 +12,9 @@ public class Cliente {
     public static AtomicInteger getCount() {
         return count;
     }
-
+    
+    GerenciaCliente gerenciador = GerenciaCliente.getInstance();
+    
     private int numero;
     private String nome;
     private String cpf;

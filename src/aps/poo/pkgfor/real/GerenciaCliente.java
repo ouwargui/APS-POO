@@ -42,4 +42,16 @@ public class GerenciaCliente {
     public boolean existeCpf(Cliente cliente) {
         return listaClientes.stream().anyMatch((listaCliente) -> (listaCliente.getCpf().equalsIgnoreCase(cliente.getCpf())));
     }
+    
+    
+       public Cliente getCliente(int numero){
+        for (Cliente cliente : getListaClientes()) {
+            if (cliente.getNumero()== numero) 
+            {
+                return cliente;
+            }
+        }
+        return null; 
+    }
+       
 }
