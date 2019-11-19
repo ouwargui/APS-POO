@@ -215,7 +215,7 @@ public class CadCliente extends javax.swing.JPanel {
         telefone = txtTelefone.getText();
         try {
 
-            GerenciaCliente gc = new GerenciaCliente();
+            GerenciaCliente gc = GerenciaCliente.getInstance();
             Cliente cli = new Cliente();
 
             cli.setNome(nome);

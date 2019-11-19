@@ -16,15 +16,20 @@ import java.util.List;
 public class GerenciaCliente {
     
     private ArrayList<Cliente> listaClientes;
+    private static GerenciaCliente instanciaUnica;
 
-
+    public static synchronized GerenciaCliente getInstance(){
+        if(instanciaUnica == null)
+            instanciaUnica = new GerenciaCliente();
+        return instanciaUnica;
+    }
     
-    public GerenciaCliente(){
+    private GerenciaCliente(){
         this.listaClientes = new ArrayList<Cliente>();
     }
 
     public ArrayList<Cliente> getListaClientes() {
-        return listaClientes;
+        return this.listaClientes;
     }
 
     public void setListaClientes(ArrayList<Cliente> listaClientes) {

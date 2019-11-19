@@ -43,6 +43,7 @@ public class CadConta extends javax.swing.JPanel {
         btnLimpar = new customButton.customButton();
         jLabel6 = new javax.swing.JLabel();
         cmbNumCliente = new rojerusan.RSComboMetro();
+        chkEspecial = new javax.swing.JCheckBox();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -95,7 +96,6 @@ public class CadConta extends javax.swing.JPanel {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/UAMLOGO.png"))); // NOI18N
 
-        cmbNumCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153), 2));
         cmbNumCliente.setForeground(new java.awt.Color(0, 0, 0));
         cmbNumCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
         cmbNumCliente.setColorArrow(new java.awt.Color(0, 153, 153));
@@ -107,6 +107,10 @@ public class CadConta extends javax.swing.JPanel {
                 cmbNumClienteActionPerformed(evt);
             }
         });
+
+        chkEspecial.setBackground(new java.awt.Color(255, 255, 255));
+        chkEspecial.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        chkEspecial.setText("Conta Especial");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,8 +125,10 @@ public class CadConta extends javax.swing.JPanel {
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(cmbNumCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(506, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkEspecial)
+                            .addComponent(cmbNumCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(408, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(37, 37, 37)
@@ -147,7 +153,9 @@ public class CadConta extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(127, 127, 127)
                 .addComponent(cmbNumCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(302, Short.MAX_VALUE))
+                .addGap(98, 98, 98)
+                .addComponent(chkEspecial)
+                .addContainerGap(174, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -234,6 +242,7 @@ public class CadConta extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customButton.customButton btnCadastrar;
     private customButton.customButton btnLimpar;
+    private javax.swing.JCheckBox chkEspecial;
     private rojerusan.RSComboMetro cmbNumCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

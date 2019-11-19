@@ -20,12 +20,12 @@ import rojerusan.RSTableMetro;
  *
  * @author Kyky
  */
-public class ListaConta extends javax.swing.JPanel {
+public class ListaConta1 extends javax.swing.JPanel {
 
     /**
      * Creates new form ListaConta
      */
-    public ListaConta() {
+    public ListaConta1() {
         initComponents();
         lerTabela();
     }
@@ -42,8 +42,8 @@ public class ListaConta extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblContas = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblDados = new rojerusan.RSTableMetro();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -64,7 +64,38 @@ public class ListaConta extends javax.swing.JPanel {
             .addGap(0, 8, Short.MAX_VALUE)
         );
 
-        tblContas.setModel(criarDado());
+        tblDados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nº CONTA", "Nº CLIENTE", "DATA ABERTURA", "SALDO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDados.setColorBackgoundHead(new java.awt.Color(0, 153, 153));
+        tblDados.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        tblDados.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        tblDados.setColorFilasForeground2(new java.awt.Color(0, 0, 0));
+        tblDados.setColorSelBackgound(new java.awt.Color(0, 153, 153));
+        tblDados.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        tblDados.setFuenteFilas(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        tblDados.setFuenteFilasSelect(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        tblDados.setFuenteHead(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        tblDados.setGridColor(new java.awt.Color(204, 204, 204));
+        tblDados.setGrosorBordeFilas(0);
+        tblDados.setRowHeight(25);
+        tblDados.setRowMargin(0);
+        tblDados.setSelectionBackground(new java.awt.Color(0, 153, 153));
         Banco banco = Banco.getInstance();
         String[] colunas = {"Numero", "Nome", "Data de Abertura", "Saldo"};
         String[][] dados = new String[banco.getListaContas().size()][colunas.length];
@@ -81,8 +112,8 @@ public class ListaConta extends javax.swing.JPanel {
         }
 
         TableModel model = new DefaultTableModel(dados, colunas);
-        tblContas = new JTable(model);
-        jScrollPane1.setViewportView(tblContas);
+        tblDados.setModel(model);
+        jScrollPane2.setViewportView(tblDados);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,12 +122,12 @@ public class ListaConta extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -107,7 +138,7 @@ public class ListaConta extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -128,8 +159,8 @@ public class ListaConta extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblContas;
+    private javax.swing.JScrollPane jScrollPane2;
+    private rojerusan.RSTableMetro tblDados;
     // End of variables declaration//GEN-END:variables
 private void lerTabela() {
        
@@ -145,7 +176,7 @@ private void lerTabela() {
     private TableModel criarDado(){
         Banco banco = Banco.getInstance();
         System.out.println(banco.getListaContas().size());
-        String[] colunas = {"Numero", "Nome", "Data de Abertura", "Saldo"};
+        String[] colunas = {"Numero", "Numero Cliente", "Data de Abertura", "Saldo"};
         String[][] dados = new String[banco.getListaContas().size()][colunas.length];
         int i = 0;
         for (Conta objContas : banco.getListaContas()) {
@@ -160,7 +191,7 @@ private void lerTabela() {
         }
 
         TableModel model = new DefaultTableModel(dados, colunas);
-
+       
         return model;
     }
 }
