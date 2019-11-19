@@ -14,24 +14,27 @@ import java.util.List;
  * @author GuilhermeSantos
  */
 public class GerenciaCliente {
-    ArrayList<Cliente> listaCliente = new ArrayList<>();
+    
+    private ArrayList<Cliente> listaClientes;
 
-    public ArrayList<Cliente> getListaCliente(){
-        return listaCliente;
+
+    
+    public GerenciaCliente(){
+        this.listaClientes = new ArrayList<Cliente>();
     }
 
+    public ArrayList<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+
+    public void setListaClientes(ArrayList<Cliente> listaClientes) {
+        this.listaClientes = listaClientes;
+    }
     public void adicionar(Cliente cliente) {
-        this.listaCliente.add(cliente);
-    }
-
-    public String listar() {
-      String listar = "";
-
-      return listar;
+        this.listaClientes.add(cliente);
     }
 
     public boolean existeCpf(Cliente cliente) {
-
-    return true;
- }
+        return listaClientes.stream().anyMatch((listaCliente) -> (listaCliente.getCpf().equalsIgnoreCase(cliente.getCpf())));
+    }
 }

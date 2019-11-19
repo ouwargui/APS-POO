@@ -51,31 +51,29 @@ public class Conta {
     }
 
     public void depositar(Double quantia) {
-
-        this.setSaldo(this.saldo + quantia);
-
+        this.setSaldo(this.getSaldo() + quantia);
+    }
+    
+    public boolean ehPossivelDebito(double quantia){
+        return this.getSaldo() > quantia;
     }
 
-    public boolean debitar(Double quantia) {
-        boolean debito = false;
-
-        if (this.saldo < quantia) {
-
-            debito = true;
-            this.setSaldo(this.saldo - quantia);
+    public boolean debitar(double quantia) {
+        if(ehPossivelDebito(quantia)){
+            this.setSaldo(this.getSaldo() - quantia);
+            return true;
+        }else{
+            return false;
         }
-        if (debito = true) {
-            JOptionPane.showMessageDialog(null, "Débito confirmado");
-        } else {
-            JOptionPane.showMessageDialog(null, "Débito negado, Saldo indisponível");
-        }
-        return debito;
     }
 
-    public boolean transferir(int numero, Double quantia) {
-        boolean transferido = false;
-
-        return transferido;
+    public boolean transferir(Conta conta, Double quantia) {
+        if(debitar(quantia)){
+            conta.setSaldo(conta.getSaldo() + quantia);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public String imprimir(){
