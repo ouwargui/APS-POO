@@ -197,7 +197,7 @@ public class CadConta extends javax.swing.JPanel {
 
         try {
 
-            Banco banco = new Banco();
+            Banco banco = Banco.getInstance();
             Conta conta = new Conta();
 
             conta.setCliente(numero);

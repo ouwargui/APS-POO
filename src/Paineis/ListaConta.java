@@ -64,17 +64,24 @@ public class ListaConta extends javax.swing.JPanel {
             .addGap(0, 8, Short.MAX_VALUE)
         );
 
-        tblContas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        tblContas.setModel(criarDado());
+        Banco banco = Banco.getInstance();
+        String[] colunas = {"Numero", "Nome", "Data de Abertura", "Saldo"};
+        String[][] dados = new String[banco.getListaContas().size()][colunas.length];
+        int i = 0;
+        for (Conta objContas : banco.getListaContas()) {
+            String[] dadosUsuario = new String[colunas.length];
+            dadosUsuario[0] = "" + objContas.getNumero();
+            dadosUsuario[1] = "" + objContas.getCliente();
+            dadosUsuario[2] = objContas.getDataAbertura();
+            dadosUsuario[3] = "" + objContas.getSaldo();
+            //dadosUsuario[4] = objContas instanceof ContaEspecial ? "" + ((ContaEspecial) objContas).getLimite() : "Conta Comum";
+
+            dados[i++] = dadosUsuario;
+        }
+
+        TableModel model = new DefaultTableModel(dados, colunas);
+        tblContas = new JTable(model);
         jScrollPane1.setViewportView(tblContas);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -125,28 +132,7 @@ public class ListaConta extends javax.swing.JPanel {
     private javax.swing.JTable tblContas;
     // End of variables declaration//GEN-END:variables
 private void lerTabela() {
-        Banco banco = Banco.getInstance();
-        try {
-            String[] colunas = {"Numero", "Nome", "Data de Abertura", "Saldo"};
-            String[][] dados = new String[banco.getListaContas().size()][colunas.length];
-            int i = 0;
-            for (Conta objContas : banco.getListaContas()) {
-                String[] dadosUsuario = new String[colunas.length];
-                dadosUsuario[0] = "" + objContas.getNumero();
-                dadosUsuario[1] = "" + objContas.getCliente();
-                dadosUsuario[2] = objContas.getDataAbertura();
-                dadosUsuario[3] = "" + objContas.getSaldo();
-                //dadosUsuario[4] = objContas instanceof ContaEspecial ? "" + ((ContaEspecial) objContas).getLimite() : "Conta Comum";
-
-                dados[i++] = dadosUsuario;
-            }
-
-            TableModel model = new DefaultTableModel(dados, colunas);
-            tblContas = new JTable(model);
-
-        } catch (Exception ex) {
-            Logger.getLogger(ListaConta.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
         // System.out.println(dados.getSize());
         //DefaultTableModel modelo = new DefaultTableModel();
         //modelo.setColumnIdentifiers(new String[]{"Nº Conta", "Titular", "Data Inicial", "Saldo"});
@@ -154,5 +140,27 @@ private void lerTabela() {
         //    modelo.addRow(new Object[]{conta.getNumero(), conta.getCliente(), conta.getDataAbertura(), conta.getSaldo()});
         //    tblContas.setModel(modelo);
         //}
+    }
+
+    private TableModel criarDado(){
+        Banco banco = Banco.getInstance();
+        System.out.println(banco.getListaContas().size());
+        String[] colunas = {"Numero", "Nome", "Data de Abertura", "Saldo"};
+        String[][] dados = new String[banco.getListaContas().size()][colunas.length];
+        int i = 0;
+        for (Conta objContas : banco.getListaContas()) {
+            String[] dadosUsuario = new String[colunas.length];
+            dadosUsuario[0] = "" + objContas.getNumero();
+            dadosUsuario[1] = "" + objContas.getCliente();
+            dadosUsuario[2] = objContas.getDataAbertura();
+            dadosUsuario[3] = "" + objContas.getSaldo();
+            //dadosUsuario[4] = objContas instanceof ContaEspecial ? "" + ((ContaEspecial) objContas).getLimite() : "Conta Comum";
+
+            dados[i++] = dadosUsuario;
+        }
+
+        TableModel model = new DefaultTableModel(dados, colunas);
+
+        return model;
     }
 }

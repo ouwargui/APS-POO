@@ -19,7 +19,7 @@ public class Banco {
     private ArrayList<Conta> listaContas;
     private static Banco instanciaUnica;
     
-    public Banco(){
+    private Banco(){
         this.listaContas = new ArrayList<Conta>();
     }
 
