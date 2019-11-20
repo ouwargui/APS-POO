@@ -80,6 +80,16 @@ public class CadConta extends javax.swing.JPanel {
 
         txtSaldo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         txtSaldo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153), 2));
+        txtSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSaldoActionPerformed(evt);
+            }
+        });
+        txtSaldo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSaldoKeyTyped(evt);
+            }
+        });
 
         btnCadastrar.setBackground(new java.awt.Color(0, 153, 153));
         btnCadastrar.setText("CADASTRAR");
@@ -195,6 +205,13 @@ public class CadConta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        
+        if (cmbNumCliente.getItemAt(0)== null){
+            
+            JOptionPane.showMessageDialog(null, "Mano, num tem cliente velho!");
+            
+        }else{
+        
         int numero;
         double saldo;
         String data;
@@ -235,6 +252,8 @@ public class CadConta extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        
+    }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
@@ -244,6 +263,17 @@ public class CadConta extends javax.swing.JPanel {
     private void cmbNumClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNumClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbNumClienteActionPerformed
+
+    private void txtSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSaldoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSaldoActionPerformed
+
+    private void txtSaldoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSaldoKeyTyped
+        String caracteres = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!@#$%¨&*()_+=[{]}/?;:.>,<°ºª§¬¢£³²¹/*-+,|";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtSaldoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

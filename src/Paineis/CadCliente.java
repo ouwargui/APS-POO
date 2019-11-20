@@ -6,6 +6,7 @@
 package Paineis;
 
 
+import View.JCadastro;
 import aps.poo.pkgfor.real.Cliente;
 import aps.poo.pkgfor.real.GerenciaCliente;
 import java.text.ParseException;
@@ -84,6 +85,11 @@ public class CadCliente extends javax.swing.JPanel {
 
         txtNome.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153), 2));
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
         txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNomeKeyTyped(evt);
@@ -226,7 +232,9 @@ public class CadCliente extends javax.swing.JPanel {
 
             gc.adicionar(cli);
 
-            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+            JCadastro telinha = new JCadastro();
+            
+            telinha.setVisible(true);
             
             txtCpf.setText("");
             txtNome.setText("");
@@ -236,6 +244,10 @@ public class CadCliente extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
